@@ -40,7 +40,7 @@ body{
     padding: 10px;
 }
 .carousel{
-    background:purple;
+    background:#512DA8;
 }
 .carousel-item{
     height: 300px;
@@ -50,10 +50,13 @@ body{
     top: 0;
     left: 0;
     min-height: 300px;
+<<<<<<< HEAD
 }
 
 #carouselButton{
     right: 0px;
     position: absolute;
     bottom: 0px;
+=======
+>>>>>>> parent of 913d8d5... Bootstrap and JQuery
 }
