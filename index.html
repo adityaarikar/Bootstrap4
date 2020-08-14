@@ -35,7 +35,7 @@
                     </li>
                 </ul>
                 <span class="navbar-text">
-                    <a data-toggle="modal" data-target="#loginModal">
+                    <a id="loginBtn">
                         <span class="fa fa-sign-in"></span>Login
                     </a>
                 </span>
@@ -49,31 +49,37 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Login </h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <button type="button" class="close" id="cancel-login-2">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <form class="form-inline">
-                        <div class="form-group">
-                            <label class="sr-only" for="exampleInputEmail3">Email address</label>
-                            <input type="email" class="form-control form-control-sm mr-1" id="exampleInputEmail3"
-                                placeholder="Enter email">
+                    <form>
+                        <div class="row">
+                            <div class="form-group col-12 col-sm-4">
+                                <label class="sr-only" for="exampleInputEmail3">Email address</label>
+                                <input type="email" class="form-control form-control-sm mr-1" id="exampleInputEmail3"
+                                    placeholder="Enter email">
+                            </div>
+                            <div class="form-group col-12 col-sm-4">
+                                <label class="sr-only" for="exampleInputPassword3">Password</label>
+                                <input type="password" class="form-control form-control-sm mr-1"
+                                    id="exampleInputPassword3" placeholder="Password">
+                            </div>
+                            <div class="form-check col-12 col-sm-4">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox"> Remember me
+                                </label>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label class="sr-only" for="exampleInputPassword3">Password</label>
-                            <input type="password" class="form-control form-control-sm mr-1" id="exampleInputPassword3"
-                                placeholder="Password">
-                        </div>
-                        <div class="form-check">
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="checkbox"> Remember me
-                            </label>
+                        <div class="row">
+                            <div class="col-sm-9 ml-0"></div>
+                            <div class="col-sm-3">
+                                <button type="button" class="btn btn-secondary btn-sm" id="cancel-login">Cancel</button>
+                                <button type="submit" class="btn btn-primary btn-sm">Sign in</button>
+                            </div>
                         </div>
                     </form>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-primary btn-sm">Sign in</button>
-                </div>
+
             </div>
         </div>
     </div>
@@ -91,20 +97,20 @@
                     <img src="img/logo.png" class="img-fluid">
                 </div>
                 <div class="col-12 col-sm align-self-center" style="text-align: center;">
-                    <a type="button" class="btn btn-warning btn-sm btn-block" data-toggle="modal"
-                        data-target="#reservationFormModal" role="button">Reserve Table</a>
+                    <a type="button" id="reserveBtn" class="btn btn-warning btn-sm btn-block" role="button">Reserve
+                        Table</a>
                 </div>
             </div>
         </div>
     </header>
 
-    <div id="reservationFormModal" class="modal fade" role="dialog">
+    <div id="reserveTable" class="modal fade" role="dialog">
         <div class="modal-dialog modal-lg" role="content">
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Reserve a table </h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <button type="button" class="close" id="cancel-reserv-2">&times;</button>
                 </div>
                 <div class="modal-body">
                     <form>
@@ -113,17 +119,17 @@
                             <div class="col-md-10">
                                 <div class="form-group col-sm">
                                     <label><input id="guests" type="radio" aria-label="Radio button" name="select">
-                                        1</label>
+                                        1 </label>
                                     <label><input id="guests" type="radio" aria-label="Radio button" name="select">
-                                        2</label>
+                                        2 </label>
+                                    <label><input id="guests" type="radio" aria-label="Radio button" name="select" checked>
+                                        3 </label>
                                     <label><input id="guests" type="radio" aria-label="Radio button" name="select">
-                                        3</label>
+                                        4 </label>
                                     <label><input id="guests" type="radio" aria-label="Radio button" name="select">
-                                        4</label>
+                                        5 </label>
                                     <label><input id="guests" type="radio" aria-label="Radio button" name="select">
-                                        5</label>
-                                    <label><input id="guests" type="radio" aria-label="Radio button" name="select">
-                                        6</label>
+                                        6 </label>
                                 </div>
                             </div>
                         </div>
@@ -157,7 +163,7 @@
                         </div>
                         <div class="form-group row">
                             <div class="offset-md-2 col-md-10">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                <button type="button" class="btn btn-secondary" id="cancel-reserve" role="button">Cancel</button>
                                 <button type="submit" class="btn btn-primary">Reserve</button>
                             </div>
                         </div>
@@ -338,24 +344,7 @@
     <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
     <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('mycarousel').carousel({ intervel: 2000 });
-            $("#carouselButton").click(function () {
-                if ($("#carouselButton").children("span").hasClass('fa-pause')) {
-                    $("#mycarousel").carousel('pause');
-                    $("#carouselButton").children("span").removeClass('fa-pause');
-                    $("#carouselButton").children("span").addClass('fa-play');
-                }
-                else if ($("#carouselButton").children("span").hasClass('fa-play')) {
-                    $("#mycarousel").carousel('cycle');
-                    $("#carouselButton").children("span").removeClass('fa-play');
-                    $("#carouselButton").children("span").addClass('fa-pause');
-                }
-            });
-        });
-
-    </script>
+    <script src="./js/script.js"></script>
 </body>
 
 </html>
